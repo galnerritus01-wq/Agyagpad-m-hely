@@ -649,3 +649,38 @@ main p a {
   background-position: center top;
   background-size: 420px 420px;
 }
+
+.menu-toggle { display: none; }
+@media (max-width: 700px) {
+  header:has(.menu-toggle:not([hidden])) :is(.head, .header) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .menu-toggle:not([hidden]) {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    padding: 10px;
+    color: var(--ink);
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  .menu-toggle span {
+    width: 22px;
+    height: 2px;
+    background: currentColor;
+    box-shadow: 0 -7px currentColor, 0 7px currentColor;
+  }
+  .menu-toggle:not([hidden]) + nav {
+    flex: 0 0 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-bottom: .75rem;
+  }
+  .menu-toggle:not([hidden])[aria-expanded="false"] + nav { display: none; }
+}
